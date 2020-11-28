@@ -32,29 +32,29 @@ $textfield.Size = New-Object Drawing.Point 500,200
 $textfield.Multiline = $True
 $Form.Controls.Add($textfield)
 
-$CLCV = New-Object Windows.Forms.Button
-$CLCV.text = "CLCV"
-$CLCV.Location = New-Object Drawing.Point 100,500
-$CLCV.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$CLCV.Add_Click({$global:z=$textfield.Text})
-$form.AcceptButton = $CLCV
-$form.Controls.Add($CLCV)
+$Client1 = New-Object Windows.Forms.Button
+$Client1.text = "Client1"
+$Client1.Location = New-Object Drawing.Point 100,500
+$Client1.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Client1.Add_Click({$global:z=$textfield.Text})
+$form.AcceptButton = $Client1
+$form.Controls.Add($Client1)
 
-$RRNetwork = New-Object Windows.Forms.Button
-$RRNetwork.text = "RRNetwork"
-$RRNetwork.Location = New-Object Drawing.Point 200,500
-$RRNetwork.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$RRNetwork.Add_Click({$global:y=$textfield.Text})
-$form.AcceptButton = $RRNetwork
-$form.Controls.Add($RRNetwork)
+$Client2 = New-Object Windows.Forms.Button
+$Client2.text = "Client2"
+$Client2.Location = New-Object Drawing.Point 200,500
+$Client2.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Client2.Add_Click({$global:y=$textfield.Text})
+$form.AcceptButton = $Client2
+$form.Controls.Add($Client2)
 
-$First5 = New-Object Windows.Forms.Button
-$First5.text = "First5"
-$First5.Location = New-Object Drawing.Point 300,500
-$First5.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$First5.Add_Click({$global:x=$textfield.Text})
-$form.AcceptButton = $First5
-$form.Controls.Add($First5)
+$Client3 = New-Object Windows.Forms.Button
+$Client3.text = "Client3"
+$Client3.Location = New-Object Drawing.Point 300,500
+$Client3.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Client3.Add_Click({$global:x=$textfield.Text})
+$form.AcceptButton = $Client3
+$form.Controls.Add($Client3)
 
 
 $other = New-Object Windows.Forms.Button
@@ -78,7 +78,7 @@ if ($result -eq [System.Windows.Forms.DialogResult]::OK)
 if ($x -ne $null)
 {
     $stuff=$x
-    $client = "First5"
+    $client = "Client3"
     New-Object -TypeName PSCustomObject -Property @{
 
 
@@ -91,7 +91,7 @@ Time = $time
 if ($y -ne $null)
 {
     $stuff = $y
-    $client = "RRNetwork"
+    $client = "Client2"
     New-Object -TypeName PSCustomObject -Property @{
 
 
@@ -104,7 +104,7 @@ Time = $time
 if ($z -ne $null)
 {
     $stuff = $z
-    $client = "CLCV"
+    $client = "Client1"
     New-Object -TypeName PSCustomObject -Property @{
 
 
@@ -128,3 +128,7 @@ Time = $time
 } | Export-Csv -Path c:\temp\notes.csv -NoTypeInformation -Append
 }
 
+Clear-Variable x -ErrorAction SilentlyContinue
+Clear-Variable y -ErrorAction SilentlyContinue
+Clear-Variable z -ErrorAction SilentlyContinue
+Clear-Variable o -ErrorAction SilentlyContinue
